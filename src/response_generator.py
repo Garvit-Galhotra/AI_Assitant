@@ -179,11 +179,7 @@ def handle_followup(user_id, context):
 # ✅ Main chatbot function with improved conversation flow
 def chatbot_flow():
     while True:
-        user_id = input("Enter your user ID (or type 'exit' to quit): ")
-
-        if user_id.lower() == "exit":
-            print("Exiting chatbot.")
-            break
+        user_id = 123  # Dummy user ID for context management
 
         while True:
             print(f"You ({user_id}): Say something... (Say 'quit', 'bye', or 'exit' to quit)")

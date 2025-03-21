@@ -1,84 +1,138 @@
+/* ✅ General Page Styling */
 body {
-    font-family: 'Montserrat', sans-serif;
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #1b1b1b;
-    color: #ffffff;
-}
-
-.chat-container {
-    width: 400px;
-    background-color: #2c2c2c;
-    border-radius: 15px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    margin: 0;
     overflow: hidden;
 }
 
-.chat-messages {
-    height: 300px;
-    overflow-y: auto;
-    padding-bottom: 10px;
+/* ✅ Main Layout */
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
     display: flex;
-    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: flex-end;
 }
 
-.chat-message {
-    padding: 12px 15px;
-    border-radius: 8px;
-    margin-bottom: 8px;
-    word-wrap: break-word;
-    font-size: 16px;
-}
-
-.user {
-    background-color: #44444494;
-    color: #ffffff;
-}
-
-.bot {
-    background-color: #35353580;
-    color: #a1a0a0d4;
-}
-
-.chat-input {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-input[type="text"] {
-    flex-grow: 1;
-    padding: 12px 15px;
-    border: 1px solid #555;
-    border-radius: 8px;
-    font-size: 16px;
-    background-color: #1e1e1e;
-    color: #ffffff;
-}
-
-button {
-    padding: 12px 15px;
-    background-color: #2980b9;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #3498db;
-}
-
-.chat-messages {
-    height: 300px;
-    overflow-y: auto;
-    padding-bottom: 10px;
+/* ✅ Traffic Light Container */
+.traffic-light {
+    position: absolute;
+    left: 20px;
+    top: 20px;
     display: flex;
     flex-direction: column;
-    /* Use column to display messages from top to bottom */
+    gap: 15px;
+    padding: 20px;
+    background: #222;
+    border-radius: 15px;
+    align-items: flex-start;
+}
+
+/* ✅ Light and Text Container */
+.light-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ✅ Traffic Light Default Style (Dim but Colored) */
+.light {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    opacity: 0.2; /* Initially dim */
+    transition: opacity 0.3s;
+}
+
+/* ✅ Keep Colors Even When Dimmed */
+.red {
+    background: red;
+}
+
+.yellow {
+    background: yellow;
+}
+
+.green {
+    background: green;
+}
+
+/* ✅ Text Styling */
+.light-text {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    display: none; /* Initially hidden */
+    transition: all 0.3s ease-in-out;
+}
+
+/* ✅ Highlight Effect for Active Text */
+.highlight-text {
+    display: block;
+    text-decoration: underline; /* Adds underline */
+    background-color: rgba(255, 255, 255, 0.2); /* Soft highlight effect */
+    padding: 3px 6px;
+    border-radius: 5px;
+}
+
+/* ✅ Ensure Chatbot Touches Bottom */
+.chatbot-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    bottom: 0;
+}
+
+/* ✅ Keep Humanoid Visible & Centered */
+canvas {
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* ✅ Mic Button */
+#micButton {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 65px;
+    height: 65px;
+    background: rgba(255, 75, 92, 0.7);
+    color: white;
+    font-size: 28px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 75, 92, 0.4);
+    transition: all 0.3s ease-in-out;
+    backdrop-filter: blur(5px);
+}
+
+/* ✅ Hover Effect */
+#micButton:hover {
+    background: rgba(255, 75, 92, 0.9);
+    box-shadow: 0 8px 20px rgba(255, 75, 92, 0.6);
+}
+
+/* ✅ Click Animation */
+#micButton:active {
+    transform: translateX(-50%) scale(0.9);
 }

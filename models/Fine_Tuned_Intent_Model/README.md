@@ -4,35 +4,35 @@ tags:
 - sentence-similarity
 - feature-extraction
 - generated_from_trainer
-- dataset_size:712
+- dataset_size:885
 - loss:CosineSimilarityLoss
 base_model: sentence-transformers/multi-qa-MiniLM-L6-dot-v1
 widget:
-- source_sentence: Are there any computer labs with printing services on campus?
+- source_sentence: 'Heey thare!? '
   sentences:
-  - How dos the prgram cost, and how the fees are set up?
-  - What are the facilities available here?
-  - What are the placement opportunities?
-- source_sentence: Do you know of any research labs that focus on this topic?
-  sentences:
-  - Do you offer online certification programs?
-  - What is the fee Structure?
   - Are there any research labs available?
-- source_sentence: Are there any diploma courses available at BFGI after 12th?
-  sentences:
-  - Can you tell me wut the program costs and how the feez is settup?
-  - Tell me about the College.
+  - What is the fee Structure?
   - Hi
-- source_sentence: Is there a Computer Science department?
+- source_sentence: Are national holidays acknowledged or celebrated at the college?
   sentences:
-  - What courses should I take next semester?
-  - What are the placement opportunities?
+  - Which companies organize recruitment visits?
+  - What is the contact information for the college?
+  - Does the college have a department for Computer Science?
+- source_sentence: What are the arts programs available at BFGI after 12th?
+  sentences:
+  - Does the college observe national holidays with any celebrations?
   - what are the courses offered?
-- source_sentence: Can I take summer courses to graduate early?
+  - What is the contact information for the college?
+- source_sentence: Do you have a dining hall on campus?
   sentences:
-  - What courses should I take next semester?
-  - Are there any diploma programs?
-  - What courses should I take next semester?
+  - what are the courses offered?
+  - What is the contact information for the college?
+  - What’s the best-paying offer given?
+- source_sentence: Are there online forums where students and teachers can discuss?
+  sentences:
+  - What is the schedule for semester exams at BFGI?
+  - Does the campus have sports facilities, indoor or outdoor?
+  - Tell me about the College.
 pipeline_tag: sentence-similarity
 library_name: sentence-transformers
 ---
@@ -86,9 +86,9 @@ from sentence_transformers import SentenceTransformer
 model = SentenceTransformer("sentence_transformers_model_id")
 # Run inference
 sentences = [
-    'Can I take summer courses to graduate early?',
-    'What courses should I take next semester?',
-    'What courses should I take next semester?',
+    'Are there online forums where students and teachers can discuss?',
+    'Does the campus have sports facilities, indoor or outdoor?',
+    'Tell me about the College.',
 ]
 embeddings = model.encode(sentences)
 print(embeddings.shape)
@@ -142,20 +142,19 @@ You can finetune this model on your own dataset.
 
 #### Unnamed Dataset
 
-
-* Size: 712 training samples
+* Size: 885 training samples
 * Columns: <code>sentence_0</code>, <code>sentence_1</code>, and <code>label</code>
-* Approximate statistics based on the first 712 samples:
-  |         | sentence_0                                                                        | sentence_1                                                                       | label                                                          |
-  |:--------|:----------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:---------------------------------------------------------------|
-  | type    | string                                                                            | string                                                                           | float                                                          |
-  | details | <ul><li>min: 6 tokens</li><li>mean: 13.14 tokens</li><li>max: 27 tokens</li></ul> | <ul><li>min: 3 tokens</li><li>mean: 9.06 tokens</li><li>max: 25 tokens</li></ul> | <ul><li>min: 0.0</li><li>mean: 0.77</li><li>max: 1.0</li></ul> |
+* Approximate statistics based on the first 885 samples:
+  |         | sentence_0                                                                        | sentence_1                                                                      | label                                                          |
+  |:--------|:----------------------------------------------------------------------------------|:--------------------------------------------------------------------------------|:---------------------------------------------------------------|
+  | type    | string                                                                            | string                                                                          | float                                                          |
+  | details | <ul><li>min: 6 tokens</li><li>mean: 13.26 tokens</li><li>max: 27 tokens</li></ul> | <ul><li>min: 3 tokens</li><li>mean: 9.7 tokens</li><li>max: 21 tokens</li></ul> | <ul><li>min: 0.0</li><li>mean: 0.65</li><li>max: 1.0</li></ul> |
 * Samples:
-  | sentence_0                                                                          | sentence_1                                              | label            |
-  |:------------------------------------------------------------------------------------|:--------------------------------------------------------|:-----------------|
-  | <code>Are there any resources to help me find a faculty mentor for research?</code> | <code>Are there any research labs available?</code>     | <code>1.0</code> |
-  | <code>Does the college have Wi-Fi facilities?</code>                                | <code>Who currentley leads the Depatment of SSD?</code> | <code>0.0</code> |
-  | <code>How many departments have research centers or institutes?</code>              | <code>How many Departments do you have?</code>          | <code>1.0</code> |
+  | sentence_0                                                                            | sentence_1                                                            | label            |
+  |:--------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:-----------------|
+  | <code>What’s the college like?</code>                                                 | <code>What engineering programs are available at BFGI?</code>         | <code>0.0</code> |
+  | <code>What kind of recreational sports equipment is available for student use?</code> | <code>What are the facilities available here?</code>                  | <code>1.0</code> |
+  | <code>What are the passing requirements for exams at BFGI?</code>                     | <code>How many departments are involved with research centers?</code> | <code>0.0</code> |
 * Loss: [<code>CosineSimilarityLoss</code>](https://sbert.net/docs/package_reference/sentence_transformer/losses.html#cosinesimilarityloss) with these parameters:
   ```json
   {
@@ -293,12 +292,12 @@ You can finetune this model on your own dataset.
 </details>
 
 ### Framework Versions
-- Python: 3.12.4
-- Sentence Transformers: 3.3.1
-- Transformers: 4.47.0
-- PyTorch: 2.3.1+cpu
-- Accelerate: 1.2.0
-- Datasets: 3.1.0
+- Python: 3.12.8
+- Sentence Transformers: 3.4.0
+- Transformers: 4.48.1
+- PyTorch: 2.6.0+cpu
+- Accelerate: 1.4.0
+- Datasets: 3.2.0
 - Tokenizers: 0.21.0
 
 ## Citation

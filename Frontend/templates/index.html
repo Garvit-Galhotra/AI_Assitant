@@ -4,113 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voice-Enabled AI Chat</title>
-    <style>
-        body {
-            background-color: black;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+    <title>Live2D Chatbot</title>
+    <link rel="icon" type="image/jpg" href="static/Chatbot_AI_Favicon.jpg">
 
-        .container {
-            position: relative;
-            width: 12cm;
-            height: 12cm;
-        }
+    <!-- ✅ Load External CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-        .image-container {
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    <!-- ✅ Load Required Libraries in Correct Order -->
+    <script src="{{ url_for('static', filename='live2d.min.js') }}"></script> 
+    <script src="{{ url_for('static', filename='live2dcubismcore.js') }}"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.0.4/pixi.min.js"></script>
+    <script src="https://unpkg.com/pixi-live2d-display/dist/index.min.js"></script>
 
-        .image {
-            width: 6cm;
-            height: 6cm;
-        }
-
-        .mic-icon {
-            font-size: 24px;
-            cursor: pointer;
-            color: white;
-            transition: transform 0.2s ease, background-color 0.3s ease;
-            padding: 10px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        .mic-icon:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
-        }
-
-        .mic-icon.recording {
-            background-color: rgba(255, 0, 0, 0.5);
-        }
-
-        /* Positioning */
-        .top {
-            top: -7cm;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .bottom {
-            bottom: -7cm;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .left {
-            left: -7cm;
-            top: 50%;
-            transform: translateY(-50%) rotate(-90deg);
-        }
-
-        .right {
-            right: -7cm;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-    </style>
 </head>
 
 <body>
     <div class="container">
-        <!-- Top Image + Mic -->
-        <div class="image-container top">
-            <img src="{{ url_for('static', filename='Images/ChatBot AI image_Lower.png') }}" alt="Chatbot AI"
-                class="image">
-            <span class="micButton mic-icon">🎙️</span>
+
+        <!-- ✅ Traffic Light with Dynamic Text -->
+        <div class="traffic-light">
+            <div class="light-container">
+                <div class="light red"></div>
+                <span class="light-text">AI is Speaking</span>
+            </div>
+            <div class="light-container">
+                <div class="light yellow"></div>
+                <span class="light-text">Generating Response</span>
+            </div>
+            <div class="light-container">
+                <div class="light green"></div>
+                <span class="light-text">AI is Listening</span>
+            </div>
         </div>
 
-        <!-- Bottom Image + Mic -->
-        <div class="image-container bottom">
-            <span class="micButton mic-icon">🎙️</span>
-            <img src="{{ url_for('static', filename='Images/ChatBot AI image_Right.png') }}" alt="Chatbot AI"
-                class="image">
-        </div>
+        <!-- ✅ Chatbot (Live2D) Centered -->
+        <div class="chatbot-container">
+            <canvas id="live2dCanvas"></canvas>
 
-        <!-- Left Image + Mic -->
-        <div class="image-container left">
-            <img src="{{ url_for('static', filename='Images/ChatBot AI image_Right.png') }}" alt="Chatbot AI"
-                class="image">
-            <span class="micButton mic-icon">🎙️</span>
-        </div>
-
-        <!-- Right Image + Mic -->
-        <div class="image-container right">
-            <img src="{{ url_for('static', filename='Images/ChatBot AI image_Left.png') }}" alt="Chatbot AI"
-                class="image">
-            <span class="micButton mic-icon">🎙️</span>
+            <!-- ✅ Mic Button -->
+            <button id="micButton">🎤</button>
         </div>
     </div>
 
-    <script src="{{ url_for('static', filename='app.js') }}"></script>
+    <!-- ✅ Load External JavaScript -->
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
 </body>
 
 </html>
